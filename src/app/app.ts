@@ -1,12 +1,14 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CustomersComponent } from './customers/customers.component';
 
 @Component({
+  standalone: true,
+  imports: [CustomersComponent],
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  template: ` <app-customers></app-customers> `,
 })
-export class App {
-  protected readonly title = signal('my-app');
+export class App implements OnInit {
+  constructor() {}
+
+  ngOnInit() {}
 }
