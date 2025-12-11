@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomerItem } from './customer-item/customer-item';
+import { CustomersService } from './customers.service';
 
 @Component({
   selector: 'app-customers',
@@ -11,6 +12,13 @@ import { CustomerItem } from './customer-item/customer-item';
 })
 
 export class Customers {
+
+  ngOnInit() {
+    this.customersService.getCustomers()
+      .subscribe(data => this.customers = data);
+  }
+
+  constructor(private customersService: CustomersService) { }
 
   toggleVisibility() {
     this.isVisible = !this.isVisible;
@@ -22,10 +30,8 @@ export class Customers {
 
   isVisible = true;
   pageTitle = "My Amazing Customers"; // This is your data
-  customers = [
-    { id: 1, name: 'John Doe', city: 'Phoenix' },
-    { id: 2, name: 'Jane Doe', city: 'Seattle' },
-    { id: 3, name: 'Michelle Thomas', city: 'New York' }
-  ];
+  customers: any[] = [];
+
+
 }
 

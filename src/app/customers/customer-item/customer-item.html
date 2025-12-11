@@ -1,5 +1,5 @@
 <div>
     {{ customer.id }} - {{ customer.name }} from City {{ customer.city }}
 </div>
-
-<button (click)="onSelect()">Select</button>    
+<a [routerLink]="['/orders', customer.id]">View Orders</a>
+<button (click)="onSelect()">Select</button>
