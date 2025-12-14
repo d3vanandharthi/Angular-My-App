@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import 'zone.js';
+
 import { bootstrapApplication } from '@angular/platform-browser';
 
 import { Customers } from './app/customers/customers';

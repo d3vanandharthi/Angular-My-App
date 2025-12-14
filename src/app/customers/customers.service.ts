@@ -1,14 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
 @Injectable({
     providedIn: 'root'
 })
 export class CustomersService {
+    constructor(private http: HttpClient) { }
 
-      // 1. Get ALL (Keep this simple for the list)
+    // 1. Get ALL (Keep this simple for the list)
+
     getCustomers(): Observable<any[]> {
-        return of(this.customers);
+        return this.http.get<any[]>('https://jsonplaceholder.typicode.com/users')
+            .pipe(
+                map(users => users.map(u => ({
+                    id: u.id,
+                    name: u.name,
+                    city: u.address.city
+                })))
+            );
     }
 
     // 2. Get ONE (New method for the Edit Form)
