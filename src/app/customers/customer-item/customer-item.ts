@@ -12,8 +12,12 @@ import { RouterLink } from '@angular/router';
 export class CustomerItem {
   @Input() customer: any;
   @Output() selected = new EventEmitter<string>();
+  @Output() deleted = new EventEmitter<number>();
 
   onSelect() {
     this.selected.emit(this.customer.name);
+  }
+  onDelete() {
+    this.deleted.emit(this.customer.id);
   }
 }

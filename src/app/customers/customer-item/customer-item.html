@@ -2,4 +2,7 @@
     {{ customer.id }} - {{ customer.name }} from City {{ customer.city }}
 </div>
 <a [routerLink]="['/orders', customer.id]">View Orders</a>
+<a [routerLink]="['/customers/edit', customer.id]" style="margin-left: 10px;">Edit</a>
 <button (click)="onSelect()">Select</button>
+
+<button (click)="onDelete()" style="color: red; margin-left: 10px;">Delete</button>

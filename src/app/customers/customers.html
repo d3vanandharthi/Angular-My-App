@@ -4,10 +4,17 @@
 
 <button (click)="toggleVisibility()">Show/Hide List</button>
 
+<a routerLink="/customers/add" class="add-btn">Add New Customer</a>
+<br><br>
+
+
 
 <ul *ngIf="isVisible">
 
     <li *ngFor="let customer of customers">
-        <app-customer-item [customer]="customer" (selected)="buy($event)"></app-customer-item>
+        <app-customer-item [customer]="customer" (selected)="buy($event)" (deleted)="delete($event)">
+        </app-customer-item>
     </li>
+
+
 </ul>
