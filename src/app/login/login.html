@@ -1,0 +1,17 @@
+<h2 class="mb-3">Login</h2>
+<div class="card p-4" style="max-width: 400px;">
+    <!-- ERROR ALERT -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input [(ngModel)]="username" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input [(ngModel)]="password" type="password" class="form-control">
+    </div>
+    <button (click)="login()" class="btn btn-primary w-100">Sign In</button>
+</div>

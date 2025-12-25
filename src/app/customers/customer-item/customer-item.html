@@ -1,8 +1,11 @@
-<div>
-    {{ customer.id }} - {{ customer.name }} from City {{ customer.city }}
-</div>
-<a [routerLink]="['/orders', customer.id]">View Orders</a>
-<a [routerLink]="['/customers/edit', customer.id]" style="margin-left: 10px;">Edit</a>
-<button (click)="onSelect()">Select</button>
+<td>{{ customer.id }}</td>
+<td><strong>{{ customer.name }}</strong></td>
+<td>{{ customer.city }}</td>
+<td>
+    <!-- Added classes: btn btn-sm btn-info/warning/primary/danger -->
+    <a [routerLink]="['/orders', customer.id]" class="btn btn-sm btn-info me-2">Orders</a>
+    <a [routerLink]="['/customers/edit', customer.id]" class="btn btn-sm btn-warning me-2">Edit</a>
 
-<button (click)="onDelete()" style="color: red; margin-left: 10px;">Delete</button>
+    <button (click)="onSelect()" class="btn btn-sm btn-primary me-2">Select</button>
+    <button (click)="onDelete()" class="btn btn-sm btn-danger">Delete</button>
+</td>

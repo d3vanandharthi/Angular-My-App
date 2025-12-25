@@ -1,20 +1,28 @@
-<h2>{{pageTitle}}</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>{{pageTitle}}</h2>
+    <a routerLink="/customers/add" class="btn btn-success">+ Add Customer</a>
+</div>
 
-<input [(ngModel)]="pageTitle" type="text">
+<div class="input-group mb-3">
+    <span class="input-group-text">Page Title</span>
+    <input [(ngModel)]="pageTitle" type="text" class="form-control">
+</div>
 
-<button (click)="toggleVisibility()">Show/Hide List</button>
+<button (click)="toggleVisibility()" class="btn btn-secondary mb-3">Show/Hide List</button>
 
-<a routerLink="/customers/add" class="add-btn">Add New Customer</a>
-<br><br>
-
-
-
-<ul *ngIf="isVisible">
-
-    <li *ngFor="let customer of customers">
-        <app-customer-item [customer]="customer" (selected)="buy($event)" (deleted)="delete($event)">
-        </app-customer-item>
-    </li>
-
-
-</ul>
+<table class="table table-striped table-hover" *ngIf="isVisible">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- NOTICE: We now use the attribute selector 'app-customer-item' on a 'tr' -->
+        <tr app-customer-item *ngFor="let customer of customers" [customer]="customer" (selected)="buy($event)"
+            (deleted)="delete($event)">
+        </tr>
+    </tbody>
+</table>
